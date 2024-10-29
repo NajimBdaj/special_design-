@@ -112,11 +112,11 @@ function scrollToSections(elements) {
 //  changer l'image de coverture de ladding page
 let landding = document.getElementsByClassName("landding")[0];
 const landImages = [
-    "../images/land1.jpg",
-    "../images/land2.jpg",
-    "../images/land3.jpg",
-    "../images/land4.jpg",
-    "../images/land5.jpg",
+    "./images/land1.jpg",
+    "./images/land2.jpg",
+    "./images/land3.jpg",
+    "./images/land4.jpg",
+    "./images/land5.jpg",
 ];
 let curLandimageIndex = 1; //l'index de l'image a afficher
 //creer une fonction qui va changer l'image
@@ -127,7 +127,8 @@ function changeLandImage() {
 }
 //appler la fonction chaque 10seconde si l'utilisateur a choisi l'option yes dans random-backgrouns  settigns
 function random_Background() {
-    if (randomBackground) bagroundInrerval = setInterval(changeLandImage, 1000);
+    if (randomBackground)
+        bagroundInrerval = setInterval(changeLandImage, 10000);
 }
 random_Background();
 
