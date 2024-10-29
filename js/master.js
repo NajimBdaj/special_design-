@@ -63,7 +63,7 @@ document
                 //change the background page to the first background
                 document.getElementsByClassName(
                     "landding"
-                )[0].style.backgroundImage = "url(../images/land1.jpg)";
+                )[0].style.backgroundImage = "url(./images/land1.jpg)";
             }
             //save the option in localstorage
             localStorage.randomBackground = randomBackground;
