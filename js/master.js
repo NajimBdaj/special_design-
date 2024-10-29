@@ -19,18 +19,14 @@ if (localStorage.getItem("mainColor")) {
     });
 }
 colorsLi.forEach((li) => {
-    li.addEventListener("click", () => {
-        //remove active class from all li
-        colorsLi.forEach((li) => {
-            li.classList.remove("active");
-        });
+    li.addEventListener("click", (e) => {
+        // add and remove active calss  from li
+        HandleActive(e);
         document.documentElement.style.setProperty(
             "--main-color",
-            li.dataset.color
+            e.target.dataset.color
         );
         localStorage.mainColor = li.dataset.color;
-        //add active class to the current color
-        li.classList.add("active");
     });
 });
 //random-backgrouns:en click remove active class from span active and add it to current sapn(cliquer)
@@ -53,15 +49,11 @@ if (localStorage.randomBackground) {
 document
     .querySelectorAll(".settings-box .option-box .random-backgrounds > span")
     .forEach((opt) => {
-        opt.addEventListener("click", () => {
-            //remove active class from last option
-            opt.parentElement
-                .querySelector(".active")
-                .classList.remove("active");
-            //add active class to new option
-            opt.classList.add("active");
+        opt.addEventListener("click", (ev) => {
+            //remove active class from last option and add it in the new option
+            HandleActive(ev);
             //get the option choose by the user
-            if (opt.classList.contains("yes")) {
+            if (ev.target.classList.contains("yes")) {
                 randomBackground = true;
                 random_Background();
             } else {
@@ -77,6 +69,46 @@ document
             localStorage.randomBackground = randomBackground;
         });
     });
+//display or not the nav-bullets
+const showBullet = document.querySelectorAll(
+    ".settings-box .show-bullets span"
+);
+showBullet.forEach((opt) => {
+    opt.addEventListener("click", (e) => {
+        HandleActive(e);
+        if (e.target.classList.contains("yes")) {
+            document.querySelector(".nav-bullets").style.display = "block";
+        } else document.querySelector(".nav-bullets").style.display = "none";
+    });
+});
+// add and remove class from element function
+function HandleActive(event) {
+    //remove active class from all element
+    event.target.parentElement.querySelectorAll("*").forEach((ele) => {
+        ele.classList.remove("active");
+    });
+    //add active class to the current element clicked
+    event.target.classList.add("active");
+}
+//select all bullets
+const allBullets = document.querySelectorAll(".nav-bullets .bullet");
+//go to the section on  bullet clicked
+scrollToSections(allBullets);
+//select all links
+const allLinks = document.querySelectorAll(".header-area ul li a");
+//go to the section on  link clicked
+scrollToSections(allLinks);
+//scroll into clicked sectionLink function
+function scrollToSections(elements) {
+    elements.forEach((element) => {
+        element.addEventListener("click", (e) => {
+            e.preventDefault(); //to elimenate the default action of the links
+            document.querySelector(e.target.dataset.section).scrollIntoView({
+                behavior: "smooth", // ne marche pas !!!;
+            });
+        });
+    });
+}
 //  changer l'image de coverture de ladding page
 let landding = document.getElementsByClassName("landding")[0];
 const landImages = [

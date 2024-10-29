@@ -48,6 +48,8 @@ body {
     left: -200px;
     top: 0;
     transition: 0.4s;
+    z-index: 100;
+    border: 2px solid #eee;
 }
 
 .settings-box.open {
@@ -91,6 +93,7 @@ body {
     border-radius: 50%;
     display: inline-block;
     border: 4px solid #eee;
+    cursor: pointer;
 }
 
 .settings-box .option-box .colors-list li.active {
@@ -116,12 +119,7 @@ body {
 .settings-box .option-box .colors-list li:nth-child(5) {
     background-color: #4caf50;
 }
-
-.settings-box .option-box .random-backgrounds {
-    cursor: pointer;
-}
-
-.settings-box .option-box .random-backgrounds > span {
+.settings-box .option-box span {
     width: 50px;
     background-color: #009688;
     color: white;
@@ -132,14 +130,58 @@ body {
     font-weight: bold;
     margin: 10px 2px;
     border-radius: 5px;
+    cursor: pointer;
 }
 
-.settings-box .option-box .random-backgrounds > span.active {
+.settings-box .option-box span.active {
     opacity: 1;
 }
 
 /* end settings box */
+/* Start Nav bullets */
+.nav-bullets {
+    width: 50px;
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
+}
+.nav-bullets .bullet {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 3px solid var(--main-color);
+    margin: 10px auto;
+    position: relative;
+    cursor: pointer;
+}
+.nav-bullets .bullet .tooltip {
+    position: absolute;
+    width: 120px;
+    padding: 4px 10px;
+    background-color: var(--main-color);
+    color: #fff;
+    left: -135px;
+    top: -5px;
+    display: none;
+    cursor: default;
+    pointer-events: none;
+}
+.nav-bullets .bullet:hover .tooltip {
+    display: block;
+}
+.nav-bullets .bullet .tooltip::before {
+    content: "";
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent transparent var(--main-color);
+    position: absolute;
+    right: -20px;
+    top: calc(50% - 10px);
+}
 
+/* End Nav bullets */
 /* Start Landding Page */
 
 .landding {
@@ -283,13 +325,7 @@ body {
 }
 
 /* End Our skills */
-/* Start  galler  */
-/* .gallery{
-    
-}
-.gallery h2{
-
-} */
+/* Start  gallery  */
 .gallery .images-box {
     text-align: center;
 }
@@ -305,6 +341,7 @@ body {
 
 .popup.overlay {
     position: fixed;
+    z-index: 100;
 }
 
 .popup-box {
@@ -315,6 +352,7 @@ body {
     padding: 20px;
     background-color: white;
     border: solid 1px #ccc;
+    z-index: 100;
 }
 
 .popup-box h3 {
@@ -348,7 +386,7 @@ body {
     cursor: pointer;
 }
 
-/* End  galler  */
+/* End  gallery  */
 
 /* Start Timeline */
 .timeline {
@@ -454,3 +492,100 @@ body {
 }
 
 /* End Timeline */
+
+/* Start our feature */
+
+.feature {
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+.feature .feature-content {
+    display: flex;
+    flex-wrap: wrap;
+}
+.feature .feat-box {
+    width: calc(100% / 3);
+    text-align: center;
+    margin-bottom: 25px;
+}
+.feature .feat-box img {
+    width: 100px;
+}
+.feature .feat-box h4 {
+    margin: 10px 0 30px;
+    position: relative;
+}
+.feature .feat-box h4:before {
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 3px;
+    left: calc(50% - 15px);
+    bottom: -15px;
+    background-color: var(--main-color);
+}
+.feature .feat-box p {
+    width: 80%;
+    margin: 0 auto;
+    color: #757575;
+    line-height: 1.6;
+}
+/* End our feature */
+
+/* Start testimonialse */
+.tistemonials {
+    position: relative;
+}
+.tistemonials h2 {
+    color: #fff;
+    text-align: left;
+}
+.tistemonials ::before,
+.tistemonials ::after {
+    content: "";
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    z-index: -1;
+    top: 0;
+}
+.tistemonials ::before {
+    background-color: var(--main-color);
+    left: 0;
+}
+.tistemonials ::after {
+    background-color: #333;
+    right: 0;
+}
+.tistemonials .ts-box {
+    float: left;
+    width: calc((100% - 30px) / 3);
+    background-color: #fff;
+    margin-left: 15px;
+    padding: 15px;
+}
+.tistemonials .ts-box:first-of-type {
+    margin-left: 0;
+}
+.tistemonials .ts-box > p {
+    margin: 0 0 20px;
+    color: #757575;
+    font-style: italic;
+    line-height: 1.6;
+}
+.tistemonials .ts-box .person-info {
+    overflow: hidden;
+}
+.tistemonials .ts-box .person-info img {
+    border-radius: 50%;
+    float: left;
+    margin: 0 20px 0 5px;
+}
+.tistemonials .ts-box .person-info h4 {
+    margin: 15px 0 10px;
+}
+.tistemonials .ts-box .person-info p {
+    margin: 0;
+    color: #757575;
+}
+/* End testimonials */
